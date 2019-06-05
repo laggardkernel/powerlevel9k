@@ -34,9 +34,8 @@
 prompt_pyenv() {
   local pyenv_version_name
   local pyenv_global
-  local pyenv_root
 
-  if [ $commands[pyenv] ]; then
+  if (( $+commands[pyenv] )); then
     if [[ -n "${PYENV_VERSION}" ]]; then
       pyenv_version_name="${PYENV_VERSION}"
     else

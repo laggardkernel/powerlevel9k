@@ -32,7 +32,7 @@ prompt_rbenv() {
   local rbenv_version_name
   local rbenv_global
 
-  if [ ${commands[rbenv]} ]; then
+  if (( $+commands[rbenv] )); then
     if [[ -n "${RBENV_VERSION}" ]]; then
       rbenv_version_name="${RBENV_VERSION}"
     else
