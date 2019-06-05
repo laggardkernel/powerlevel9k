@@ -37,12 +37,12 @@ prompt_pyenv() {
   local pyenv_root
 
   if [ $commands[pyenv] ]; then
-    pyenv_version_name="$(pyenv version-name)"
-    pyenv_global="system"
-    pyenv_root="$(pyenv root)"
-    if [[ -f "${pyenv_root}/version" ]]; then
-      pyenv_global="$(pyenv version-file-read ${pyenv_root}/version)"
+    if [[ -n "${PYENV_VERSION}" ]]; then
+      pyenv_version_name="${PYENV_VERSION}"
+    else
+      pyenv_version_name="$(pyenv version-name 2>/dev/null)"
     fi
+    pyenv_global="$(pyenv global)"
   fi
 
   p9k::prepare_segment "$0" "" $1 "$2" $3 "${pyenv_version_name}" \
